@@ -1,0 +1,77 @@
+[
+    {
+        "question": "Select countries with standing Roman ruins",
+        "answer": ["Algeria", "Italy", "Tunisia", "Libya", "France", "Spain", "Morocco"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select countries historically occupied by France",
+        "answer": ["Algeria", "Tunisia", "Morocco", "Syria", "Lebanon", "Mali", "Niger", "Chad", "Cameroon"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select countries occupied by Germany in the 20th century",
+        "answer": ["Namibia", "Rwanda", "Burundi", "Togo", "Cameroon"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select countries occupied by Italy",
+        "answer": ["Libya", "Somalia", "Eritrea", "Albania"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select countries occupied by the Netherlands",
+        "answer": ["Indonesia", "Suriname", "Caribbean Netherlands"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select countries occupied by Portugal",
+        "answer": ["Angola", "Mozambique", "Brazil", "Guinea-Bissau", "Timor-Leste"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select countries occupied by Spain",
+        "answer": ["Philippines", "Guatemala", "Peru", "Costa Rica", "Cuba"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select countries occupied by the United States",
+        "answer": ["Philippines", "Puerto Rico", "Guam", "American Samoa"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select countries where Arabic is an official language",
+        "answer": ["Egypt", "Saudi Arabia", "Iraq", "Algeria", "Morocco", "Sudan", "Tunisia", "Syria"],
+        "type": "Language"
+    },
+    {
+        "question": "Select countries where French is an official language",
+        "answer": ["France", "Canada", "Belgium", "Switzerland", "Algeria", "Morocco", "Tunisia"],
+        "type": "Language"
+    },
+    {
+        "question": "Select countries where Spanish is an official language",
+        "answer": ["Spain", "Mexico", "Argentina", "Colombia", "Peru", "Chile", "Cuba"],
+        "type": "Language"
+    },
+    {
+        "question": "Select countries where Portuguese is an official language",
+        "answer": ["Portugal", "Brazil", "Angola", "Mozambique", "Guinea-Bissau"],
+        "type": "Language"
+    },
+    {
+        "question": "Select countries where English is an official language",
+        "answer": ["United States of America", "Canada", "Australia", "United Kingdom", "India", "South Africa"],
+        "type": "Language"
+    },
+    {
+        "question": "Select countries where Dutch is an official language",
+        "answer": ["Netherlands", "Belgium", "Suriname"],
+        "type": "Language"
+    },
+    {
+        "question": "Select countries that use the Euro as their currency",
+        "answer": ["Austria", "Belgium", "Cyprus", "Estonia", "Finland", "France", "Germany", "Greece", "Ireland", "Italy", "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands", "Portugal", "Slovakia", "Slovenia", "Spain"],
+        "type": "Currency"
+    }
+]
