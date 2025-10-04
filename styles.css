@@ -574,34 +574,27 @@ header p {
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Tooltip Styles (for hover) */
+/* --- Tooltip Styles for Flag Display --- */
+
 #map-tooltip {
-    position: absolute;
-    padding: 5px 10px;
-    background: rgba(0, 0, 0, 0.8);
-    border: 1px solid white;
-    color: white;
-    border-radius: 5px;
-    pointer-events: none;
-    opacity: 0;
+    background: var(--background-dark);
+    color: var(--text-light);
+    border: 2px solid var(--accent-color);
+    padding: 8px 12px;
+    border-radius: 6px;
+    pointer-events: none; /* Prevents the tooltip from blocking mouse events on the map */
     transition: opacity 0.2s;
-    font-size: 0.9rem;
-}
-
-/* --- Flag Icon and Tooltip Styling --- */
-
-/* Style for the flag and name container inside the tooltip */
-#map-tooltip {
-    /* Existing styles remain */
-    display: flex; /* Enable flex for flag and text alignment */
+    display: flex;
     align-items: center;
-    gap: 8px; /* Space between flag and name */
-    min-width: 150px; /* Ensure enough space for the flag and a long name */
+    gap: 8px;
+    z-index: 1000; /* Ensure tooltip is on top of everything */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     font-weight: 500;
 }
 
-/* Style for the flag element */
-#map-tooltip .flag-icon {
-    font-size: 1.5rem; /* Adjust size of the flag */
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Optional: small shadow for the flag */
+.flag-icon {
+    font-size: 1.5rem; /* Adjust flag size */
+    line-height: 1;
+    border-radius: 3px;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
