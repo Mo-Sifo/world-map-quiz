@@ -437,3 +437,171 @@ header p {
         padding: 10px 12px;
     }
 }
+
+
+
+
+
+
+
+/* Add these styles */
+/* Add these styles */
+#selection-counter {
+    display: inline-block;
+    color: var(--accent-color);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    transition: all 0.3s ease;
+}
+
+#selection-counter.complete {
+    background: var(--correct-color);
+    color: white;
+}
+
+.result-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.perfect-icon {
+    color: var(--correct-color);
+    font-size: 1.5rem;
+}
+
+.partial-icon {
+    color: var(--neutral-color);
+    font-size: 1.5rem;
+}
+
+#selected-countries {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.country-tag {
+    background: rgba(114, 9, 183, 0.3);
+    padding: 3px 8px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    border: 1px solid var(--selected-color);
+}
+
+.extra-points {
+    font-size: 0.8rem;
+    color: var(--correct-color);
+    margin-top: 5px;
+}
+
+
+
+
+
+.country-tag {
+    background: rgba(114, 9, 183, 0.3); /* Default purple */
+    padding: 3px 8px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    border: 1px solid var(--selected-color);
+    transition: all 0.3s ease;
+}
+
+.correct-tag {
+    background: rgba(76, 175, 80, 0.3) !important; /* Green */
+    border-color: var(--correct-color) !important;
+}
+
+.incorrect-tag {
+    background: rgba(244, 67, 54, 0.3) !important; /* Red */
+    border-color: var(--wrong-color) !important;
+}
+
+.high-score-box {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.high-score-box span:first-child {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+}
+
+.high-score-box span:last-child {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--neutral-color); /* Use neutral color for High Score */
+}
+
+/* Updated Score Display to accommodate High Score */
+.score-display {
+    display: flex;
+    gap: 15px;
+    margin-top: auto;
+}
+
+/* Style for Skip Button */
+#skip-question {
+    background: #5a5a5a;
+    border: none;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    justify-content: center;
+}
+
+#skip-question:hover {
+    background: #777;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Tooltip Styles (for hover) */
+#map-tooltip {
+    position: absolute;
+    padding: 5px 10px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid white;
+    color: white;
+    border-radius: 5px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+    font-size: 0.9rem;
+}
+
+/* --- Flag Icon and Tooltip Styling --- */
+
+/* Style for the flag and name container inside the tooltip */
+#map-tooltip {
+    /* Existing styles remain */
+    display: flex; /* Enable flex for flag and text alignment */
+    align-items: center;
+    gap: 8px; /* Space between flag and name */
+    min-width: 150px; /* Ensure enough space for the flag and a long name */
+    font-weight: 500;
+}
+
+/* Style for the flag element */
+#map-tooltip .flag-icon {
+    font-size: 1.5rem; /* Adjust size of the flag */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); /* Optional: small shadow for the flag */
+}

@@ -2,23 +2,165 @@ let selectedCountries = new Set();
 let currentQuestion = null;
 let score = 0;
 let streak = 0;
+let highScore = 0;
 let questions = [];
+let availableQuestions = [];
+let completedQuestions = new Set();
 let svg, projection, path, g, zoom;
 let timer;
-let timeLeft = 30;
-let palestinePaths = []; // Store references to Palestine territories
+let timeLeft = 60;
+let palestinePaths = [];
+
+// *** FINAL MASTER LOOKUP TABLE (Ensures all D3 names are covered) ***
+const topojsonNameToIso2 = {
+    // Standard countries (from the D3 TopoJSON map data)
+    "Afghanistan": "af", "Albania": "al", "Algeria": "dz", "American Samoa": "as", "Andorra": "ad", "Angola": "ao", 
+    "Anguilla": "ai", "Antarctica": "aq", "Antigua and Barb.": "ag", "Argentina": "ar", "Armenia": "am", 
+    "Aruba": "aw", "Australia": "au", "Austria": "at", "Azerbaijan": "az", "Bahamas": "bs", "Bahrain": "bh", 
+    "Bangladesh": "bd", "Barbados": "bb", "Belarus": "by", "Belgium": "be", "Belize": "bz", "Benin": "bj", 
+    "Bermuda": "bm", "Bhutan": "bt", "Bolivia": "bo",  
+    "Botswana": "bw", 
+    "Brazil": "br", "British Indian Ocean Territory": "io", "British Virgin Is.": "vg", "U.S. Virgin Is.": "vi", "Brunei": "bn", 
+    "Bulgaria": "bg", "Burkina Faso": "bf", "Burundi": "bi", "Cambodia": "kh", "Cameroon": "cm", "Canada": "ca", 
+    "Cabo Verde": "cv", "Cayman Is.": "ky", "Central African Rep.": "cf", "Chad": "td", "Chile": "cl", 
+    "China": "cn", "Christmas Island": "cx", "Cocos (Keeling) Islands": "cc", "Colombia": "co", "Comoros": "km", 
+    
+    // Congo variations (Crucial Fixes)
+    "Democratic Republic of the Congo": "cd", // Standard name
+    "Dem. Rep. Congo": "cd", // D3/TopoJSON common abbreviation
+    "Congo": "cg", // D3/TopoJSON common abbreviation
+    
+    "Cook Islands": "ck", "Costa Rica": "cr", 
+    "Côte d'Ivoire": "ci", "Croatia": "hr", "Cuba": "cu", "Curaçao": "cw", "Cyprus": "cy", "Czech Republic": "cz", 
+    "Denmark": "dk", "Djibouti": "dj", "Dominica": "dm", "Dominican Rep.": "do", "Ecuador": "ec", 
+    "Egypt": "eg", "El Salvador": "sv", "Eq. Guinea": "gq", "Eritrea": "er", "Estonia": "ee", 
+    
+    "Swaziland": "sz", // Old D3 name for Eswatini
+    
+    "Ethiopia": "et", "Falkland Is.": "fk", "Faeroe Is.": "fo", "Fiji": "fj", "Finland": "fi", 
+    "France": "fr", "Fr. Polynesia": "pf", "Gabon": "ga", "Gambia": "gm", "Georgia": "ge", "Germany": "de", 
+    "Ghana": "gh", "Gibraltar": "gi", "Greece": "gr", "Greenland": "gl", "Grenada": "gd", "Guam": "gu", 
+    "Guatemala": "gt", "Guernsey": "gg", "Guinea": "gn", "Guinea-Bissau": "gw", "Guyana": "gy", "Haiti": "ht", 
+    "Honduras": "hn", "Hong Kong": "hk", "Hungary": "hu", "Iceland": "is", "India": "in", "Indonesia": "id", 
+    "Iran": "ir", "Iraq": "iq", "Ireland": "ie", "Isle of Man": "im", "Italy": "it", 
+    "Jamaica": "jm", "Japan": "jp", "Jersey": "je", "Jordan": "jo", "Kazakhstan": "kz", "Kenya": "ke", 
+    "Kiribati": "ki", "North Korea": "kp", "South Korea": "kr", "Kuwait": "kw", "Kyrgyzstan": "kg", 
+    "Laos": "la", "Latvia": "lv", "Lebanon": "lb", "Lesotho": "ls", "Liberia": "lr", "Libya": "ly", 
+    "Liechtenstein": "li", "Lithuania": "lt", "Luxembourg": "lu", "Macau": "mo", 
+    "Macedonia": "mk", // The D3 name (often used as alias for North Macedonia) 
+    
+    "Madagascar": "mg", "Malawi": "mw", "Malaysia": "my", "Maldives": "mv", "Mali": "ml", "Malta": "mt", 
+    "Marshall Is.": "mh", "Mauritania": "mr", "Mauritius": "mu", "Mexico": "mx", "Micronesia": "fm", 
+    "Moldova": "md", "Monaco": "mc", "Mongolia": "mn", "Montenegro": "me", "Montserrat": "ms", "Morocco": "ma", 
+    "Mozambique": "mz", "Myanmar": "mm", "Namibia": "na", "Nauru": "nr", "Nepal": "np", "Netherlands": "nl", 
+    "New Caledonia": "nc", "New Zealand": "nz", "Nicaragua": "ni", "Niger": "ne", "Nigeria": "ng", 
+    "Niue": "nu", "Norfolk Island": "nf", "Northern Mariana Islands": "mp", "Norway": "no", "Oman": "om", 
+    "Pakistan": "pk", "Palau": "pw", 
+    "Palestinian National Authority": "ps", 
+    "Panama": "pa", "Papua New Guinea": "pg", "Paraguay": "py", "Peru": "pe", "Philippines": "ph", 
+    "Pitcairn Islands": "pn", "Poland": "pl", "Portugal": "pt", "Puerto Rico": "pr", "Qatar": "qa", 
+    "Romania": "ro", "Russia": "ru", "Rwanda": "rw", "Saint Helena": "sh", 
+    "St. Kitts and Nevis": "KN", "Saint Lucia": "lc", "Saint Pierre and Miquelon": "pm", 
+    "Saint Vincent and the Grenadines": "vc", "Samoa": "ws", "San Marino": "sm", "São Tomé and Principe": "st", 
+    "Saudi Arabia": "sa", "Senegal": "sn", "Serbia": "rs", "Seychelles": "sc", "Sierra Leone": "sl", 
+    "Singapore": "sg", "Sint Maarten": "sx", "Slovakia": "sk", "Slovenia": "si", "Solomon Is.": "sb", 
+    "Somalia": "so", "South Africa": "za", 
+    "S. Sudan": "ss", // South Sudan
+    "Spain": "es", "Sri Lanka": "lk", 
+    "Sudan": "sd", "Suriname": "sr", "Svalbard and Jan Mayen": "sj", "Sweden": "se", "Switzerland": "ch", 
+    "Syria": "sy", "Taiwan": "tw", "Tajikistan": "tj", "Tanzania": "tz", "Thailand": "th", "Togo": "tg", 
+    "Tokelau": "tk", "Tonga": "to", "Trinidad and Tobago": "tt", "Tunisia": "tn", "Turkey": "tr", "Timor-Leste": "tl",
+    "Turkmenistan": "tm", "Turks and Caicos Is.": "tc", "Tuvalu": "tv", "Uganda": "ug", "Ukraine": "ua", 
+    "United Arab Emirates": "ae", "United Kingdom": "gb", 
+    "United States of America": "us", 
+    "Uruguay": "uy", "Uzbekistan": "uz", "Vanuatu": "vu", "Vatican City": "va", "Venezuela": "ve", 
+    "Vietnam": "vn", "Wallis and Futuna Is.": "wf", "W. Sahara": "eh", "Yemen": "ye", "Zambia": "zm", 
+    "Zimbabwe": "zw",
+    // Disputed Territories and Neutral Zones
+    "Kosovo": "xk",
+    "N. Cyprus": "cy",
+    "Somaliland": "so",
+    "United Nations Neutral Zone": "un",
+    "South Georgia and the South Sandwich Islands": "gs",
+    // Custom/Aliased Names for consistency
+    "Czechia": "cz",
+    "Palestine": "ps", 
+    "eSwatini": "sz",
+    "North Macedonia": "mk",
+    "United States": "us", 
+    // Additional Aliases for D3 TopoJSON Compatibility
+    "Bosnia and Herz.": "ba", // Bosnia and Herzegovina D3 alias // Another common D3 alias
+    "Congo (Kinshasa)": "cd", // DRC alias
+    "Congo (Brazzaville)": "cg", // Republic of the Congo alias
+};
 
 const customCountryNames = {
     "Israel": "Palestine",
     "United States": "United States of America",
     "United Kingdom": "United Kingdom",
-    "Czech Republic": "Czechia"
+    "Czech Republic": "Czechia",
+    "eSwatini": "Eswatini",
+    "Bosnia and Herz.": "Bosnia & Herzegovina",
+    "W. Sahara": "Western Sahara",
+    "Central African Rep.": "Central African Republic",
+    "S. Sudan": "South Sudan",
+    "N. Cyprus": "Northern Cyprus",
+    "Antigua and Barb.": "Antigua and Barbuda",
+    "St. Kitts and Nevis": "Saint Kitts and Nevis",
+    "U.S. Virgin Is.": "U.S. Virgin Islands",
+    "British Virgin Is.": "British Virgin Islands",
+    "Dominican Rep.": "Dominican Republic",
+    "Cayman Is.": "Cayman Islands",
+    "faeroe Is.": "faeroe Islands",
+    "falkland Is.": "falkland Islands",
+    "Eq. Guinea": "Equatorial Guinea",
+    "Côte d'Ivoire": "ivory Coast",
+    "Cabo Verde": "Cape Verde",
+    "São Tomé and Principe": "Sao Tome and Principe",
+    "Timor-Leste": "East Timor",
+    "Solomon Is.": "Solomon Islands",
+    "Marshal Is.": "Marshall Islands",
+    "Fr. Polynesia": "French Polynesia"
 };
+
+// --- Local Storage Functions (unchanged) ---
+
+function loadProgress() {
+    const storedScore = localStorage.getItem('highScore');
+    if (storedScore) {
+        highScore = parseInt(storedScore);
+        document.getElementById('high-score').textContent = highScore;
+    }
+    const storedCompleted = localStorage.getItem('completedQuestions');
+    if (storedCompleted) {
+        completedQuestions = new Set(JSON.parse(storedCompleted));
+    }
+}
+
+function saveProgress() {
+    localStorage.setItem('completedQuestions', JSON.stringify(Array.from(completedQuestions)));
+}
+
+function updateHighScore() {
+    if (score > highScore) {
+        highScore = score;
+        localStorage.setItem('highScore', highScore);
+        document.getElementById('high-score').textContent = highScore;
+    }
+}
+
+// --- Map Initialization ---
 
 function initMap() {
     const container = document.getElementById('world-map');
     const width = container.clientWidth;
     const height = container.clientHeight;
+
+    // Create Tooltip
+    d3.select("body").append("div")
+        .attr("id", "map-tooltip")
+        .style("position", "absolute")
+        .style("opacity", 0);
 
     svg = d3.select("#world-map")
         .append("svg")
@@ -50,42 +192,36 @@ function initMap() {
             .attr("d", path)
             .attr("class", "country")
             .each(function(d) {
-                // Store references to Palestine paths
                 const countryName = customCountryNames[d.properties.name] || d.properties.name;
                 if (countryName === "Palestine") {
                     palestinePaths.push(this);
                 }
             })
             .on("click", function(event, d) {
+                if (!currentQuestion) return;
+                
                 const countryName = customCountryNames[d.properties.name] || d.properties.name;
                 const isPalestine = countryName === "Palestine";
                 
                 if (isPalestine) {
-                    // Check if any Palestine territory is already selected
-                    const isSelected = palestinePaths.some(path => 
-                        d3.select(path).classed("selected")
-                    );
+                    // Logic to handle Palestine multi-path selection
+                    const isSelected = palestinePaths.some(path => d3.select(path).classed("selected"));
                     
-                    // Toggle all Palestine territories
                     palestinePaths.forEach(path => {
-                        if (isSelected) {
-                            d3.select(path).classed("selected", false)
-                                .attr("fill", "#3a86ff");
-                        } else {
-                            d3.select(path).classed("selected", true)
-                                .attr("fill", "var(--selected-color)");
-                        }
+                        d3.select(path).classed("selected", !isSelected);
+                        d3.select(path).attr("fill", !isSelected ? "var(--selected-color)" : "#3a86ff");
                     });
                     
-                    // Update selection set
                     if (isSelected) {
                         selectedCountries.delete("Palestine");
                     } else {
                         selectedCountries.add("Palestine");
                     }
                 } else {
-                    // Normal country selection
-                    if (selectedCountries.has(countryName)) {
+                    // Standard country selection logic
+                    const isSelected = selectedCountries.has(countryName);
+                    
+                    if (isSelected) {
                         selectedCountries.delete(countryName);
                         d3.select(this).classed("selected", false)
                             .attr("fill", "#3a86ff");
@@ -96,20 +232,71 @@ function initMap() {
                     }
                 }
                 
+                updateSelectionCounter();
                 updateSelectedCountriesDisplay();
-                document.getElementById('submit-answer').disabled = selectedCountries.size === 0;
+                document.getElementById('submit-answer').disabled = 
+                    selectedCountries.size < currentQuestion.required;
             })
             .on("mouseover", function(event, d) {
+                // 1. Get the original map country name
+                const originalName = d.properties.name;
+                
+                // 2. Get the official/custom display name
+                const countryName = customCountryNames[originalName] || originalName;
+                
+                let iso2Code;
+                
+                // 3. PRIMARY LOOKUP: Check the original name from the map data
+                iso2Code = topojsonNameToIso2[originalName];
+                
+                // 4. FALLBACK LOOKUP: Check the custom/alias name 
+                if (!iso2Code) {
+                    iso2Code = topojsonNameToIso2[countryName];
+                }
+                
+                // 5. Final fallback
+                if (!iso2Code) {
+                    iso2Code = 'un'; // Default to UN if all lookups fail
+                }
+
+                // Construct the HTML with the flag icon
+                const tooltipHTML = `
+                    <span class="flag-icon flag-icon-${iso2Code.toLowerCase()}"></span>
+                    <span>${countryName}</span>
+                `;
+
+                // Show tooltip
+                d3.select("#map-tooltip").transition()
+                    .duration(200)
+                    .style("opacity", .9);
+                d3.select("#map-tooltip").html(tooltipHTML)
+                    .style("left", (event.pageX + 10) + "px")
+                    .style("top", (event.pageY - 28) + "px");
+
+                // Hover color change
                 if (!d3.select(this).classed("selected") && 
                     !d3.select(this).classed("correct") && 
-                    !d3.select(this).classed("incorrect")) {
+                    !d3.select(this).classed("incorrect") &&
+                    !d3.select(this).classed("neutral")) {
                     d3.select(this).attr("fill", "#4895ef");
                 }
             })
+            .on("mousemove", function(event) {
+                d3.select("#map-tooltip")
+                    .style("left", (event.pageX + 10) + "px")
+                    .style("top", (event.pageY - 28) + "px");
+            })
             .on("mouseout", function(event, d) {
+                // Hide tooltip
+                d3.select("#map-tooltip").transition()
+                    .duration(500)
+                    .style("opacity", 0);
+                
+                // Reset hover color
                 if (!d3.select(this).classed("selected") && 
                     !d3.select(this).classed("correct") && 
-                    !d3.select(this).classed("incorrect")) {
+                    !d3.select(this).classed("incorrect") &&
+                    !d3.select(this).classed("neutral")) {
                     d3.select(this).attr("fill", "#3a86ff");
                 }
             });
@@ -117,67 +304,33 @@ function initMap() {
 }
 
 function updateSelectedCountriesDisplay() {
-    const selectedCountriesDiv = document.getElementById('selected-countries');
-    selectedCountriesDiv.innerHTML = selectedCountries.size > 0 
-        ? `<strong>Selected:</strong> ${Array.from(selectedCountries).join(', ')}`
-        : 'No countries selected';
-}
-
-// ... (keep all other existing functions exactly as they were) ...
-
-function loadQuestions() {
-    fetch('questions.json')
-        .then(response => response.json())
-        .then(data => {
-            questions = data;
-            loadNextQuestion();
-        })
-        .catch(error => console.error('Error loading questions:', error));
-}
-
-function loadNextQuestion() {
-    if (questions.length === 0) {
-        document.getElementById('question-text').textContent = 'Quiz Completed!';
-        document.getElementById('submit-answer').style.display = 'none';
-        document.getElementById('next-question').style.display = 'none';
-        document.getElementById('result').innerHTML = `<p>Final score: ${score}</p>`;
+    const container = document.getElementById('selected-countries');
+    if (selectedCountries.size === 0) {
+        container.innerHTML = "No countries selected";
         return;
     }
+    
+    container.innerHTML = Array.from(selectedCountries).map(country => 
+        `<span class="country-tag">${country}</span>`
+    ).join('');
+}
 
-    currentQuestion = questions.splice(Math.floor(Math.random() * questions.length), 1)[0];
-    document.getElementById('question-text').textContent = currentQuestion.question;
-    document.getElementById('submit-answer').style.display = 'block';
-    document.getElementById('submit-answer').disabled = true;
-    document.getElementById('next-question').style.display = 'none';
-    document.getElementById('result').textContent = '';
-    selectedCountries.clear();
-    updateSelectedCountriesDisplay();
+function updateSelectionCounter() {
+    const counter = document.getElementById('selection-counter');
+    if (!currentQuestion) return;
     
-    // Reset map colors
-     d3.selectAll(".country")
-        .classed("selected", false)
-        .classed("correct", false)
-        .classed("incorrect", false)
-        .classed("neutral", false)
-        .attr("fill", "#3a86ff");
-    
-    // Start timer
-    resetTimer();
-    startTimer();
+    counter.textContent = `${selectedCountries.size}/${currentQuestion.required} selected`;
+    counter.classList.toggle('complete', selectedCountries.size >= currentQuestion.required);
 }
 
 function startTimer() {
     clearInterval(timer);
-    timeLeft = 30;
+    timeLeft = 60; 
     updateTimerDisplay();
     
     timer = setInterval(() => {
         timeLeft--;
         updateTimerDisplay();
-        
-        if (timeLeft <= 10) {
-            document.querySelector('.timer').style.color = '#ff5252';
-        }
         
         if (timeLeft <= 0) {
             clearInterval(timer);
@@ -186,107 +339,254 @@ function startTimer() {
     }, 1000);
 }
 
-function resetTimer() {
-    clearInterval(timer);
-    document.querySelector('.timer').style.color = 'var(--accent-color)';
-    updateTimerDisplay();
-}
-
 function updateTimerDisplay() {
-    document.querySelector('.timer').textContent = `${timeLeft}s`;
+    const timerElement = document.querySelector('.timer');
+    timerElement.textContent = `${timeLeft}s`;
+    
+    if (timeLeft <= 10) {
+        timerElement.classList.add('warning');
+    } else {
+        timerElement.classList.remove('warning');
+    }
 }
 
-function checkAnswer() {
-    clearInterval(timer);
-    const correctAnswers = new Set(currentQuestion.answer);
-    const correctSelected = Array.from(selectedCountries).filter(country => correctAnswers.has(country));
-    const incorrectSelected = Array.from(selectedCountries).filter(country => !correctAnswers.has(country));
-    const missedCountries = Array.from(correctAnswers).filter(country => !selectedCountries.has(country));
+function loadQuestions() {
+    fetch('questions.json')
+        .then(response => response.json())
+        .then(data => {
+            questions = data;
+            availableQuestions = [...questions]; 
+            loadNextQuestion();
+        });
+}
 
-    // Update map colors
+function loadNextQuestion() {
+    // If all questions have been completed, reset the completed set
+    if (availableQuestions.length === 0) {
+        if (completedQuestions.size === questions.length) {
+             // All questions have been seen, reset the pool
+            completedQuestions.clear();
+        }
+        availableQuestions = questions.filter(q => !completedQuestions.has(q.question));
+    }
+
+    if (availableQuestions.length === 0) {
+        endGame();
+        return;
+    }
+
+    // Pick a random question from the available list
+    const randomIndex = Math.floor(Math.random() * availableQuestions.length);
+    currentQuestion = availableQuestions[randomIndex];
+    
+    // Remove from available and add to completed set
+    availableQuestions.splice(randomIndex, 1);
+    completedQuestions.add(currentQuestion.question);
+    saveProgress();
+
+
+    selectedCountries.clear();
+    
+    document.getElementById('question-text').innerHTML = `
+        ${currentQuestion.question} <br>
+        <span id="selection-counter">0/${currentQuestion.required} selected</span>
+    `;
+    
+    document.getElementById('submit-answer').style.display = 'block';
+    document.getElementById('skip-question').style.display = 'block';
+    document.getElementById('submit-answer').disabled = true;
+    document.getElementById('next-question').style.display = 'none';
+    document.getElementById('result').innerHTML = '';
+    
+    // Reset map colors
+    d3.selectAll(".country")
+        .classed("selected", false)
+        .classed("correct", false)
+        .classed("incorrect", false)
+        .classed("neutral", false)
+        .attr("fill", "#3a86ff")
+        .attr("opacity", 1);
+    
+    updateSelectionCounter();
+    updateSelectedCountriesDisplay();
+    startTimer();
+}
+
+function skipQuestion() {
+    if (!currentQuestion) return;
+
+    clearInterval(timer);
+    score = Math.max(0, score - 10); // Penalty of -10 points
+    document.getElementById('score').textContent = score;
+    streak = 0;
+    document.getElementById('streak').textContent = streak;
+
+    // Display a skip message
+    document.getElementById('result').innerHTML = `
+        <div class="result-header">
+            <i class="fas fa-forward partial-icon"></i>
+            <h3>Question Skipped! -10 Points Penalty.</h3>
+        </div>
+    `;
+
+    // Visually mark the correct answers as missed (neutral)
+    const correctAnswers = new Set(currentQuestion.answer);
     d3.selectAll(".country").each(function(d) {
         const countryName = customCountryNames[d.properties.name] || d.properties.name;
         if (correctAnswers.has(countryName)) {
-            if (selectedCountries.has(countryName)) {
-                d3.select(this).classed("correct", true);
-            } else {
-                d3.select(this).classed("neutral", true);
-            }
-        } else if (selectedCountries.has(countryName)) {
-            d3.select(this).classed("incorrect", true);
+            d3.select(this)
+                .classed("neutral", true)
+                .attr("fill", "var(--neutral-color)");
         }
     });
 
-    // Calculate score
-    const correctCount = correctSelected.length;
-    const incorrectCount = incorrectSelected.length;
-    const points = Math.max(0, correctCount * 5 - incorrectCount * 2);
-    score += points;
+    // Hide submission and show next
+    document.getElementById('submit-answer').style.display = 'none';
+    document.getElementById('skip-question').style.display = 'none';
+    document.getElementById('next-question').style.display = 'block';
+}
+
+
+function checkAnswer() {
+    clearInterval(timer);
     
-    // Create result HTML
+    const correctAnswers = new Set(currentQuestion.answer);
+    let correctCount = 0;
+    let extraCorrect = 0;
+    let incorrectCount = 0;
+    
+    // 1. Tallying results
+    selectedCountries.forEach(country => {
+        if (correctAnswers.has(country)) {
+            if (correctCount < currentQuestion.required) {
+                correctCount++;
+            } else {
+                extraCorrect++;
+            }
+        } else {
+            incorrectCount++;
+        }
+    });
+    
+    // 2. Scoring Calculation
+    const basePercentage = Math.min(100, (correctCount / currentQuestion.required) * 100);
+    const extraPercentage = Math.min(50, (extraCorrect / currentQuestion.required) * 50);
+    const totalPercentage = basePercentage + extraPercentage;
+    
+    const pointsGained = Math.floor(totalPercentage / 10);
+    const pointsPenalty = incorrectCount * 3; // 3 point penalty per incorrect selection
+    const totalPointsChange = pointsGained - pointsPenalty;
+    
+    score += totalPointsChange;
+    score = Math.max(0, score); // Score cannot go below 0
+    document.getElementById('score').textContent = score;
+    updateHighScore(); // Check for new high score
+    
+    // 3. Streak and Result Header
     let resultHTML = `<div class="result-summary">`;
-    
-    if (correctCount === correctAnswers.size && incorrectCount === 0) {
+    if (correctCount >= currentQuestion.required && incorrectCount === 0) {
         streak++;
         resultHTML += `
             <div class="result-perfect">
-                <i class="fas fa-trophy"></i>
+                <i class="fas fa-check-circle perfect-icon"></i>
                 <div>
                     <h3>Perfect Answer!</h3>
-                    <p>+${points} points</p>
+                    <p>+${pointsGained} points, +1 Streak!</p>
                 </div>
-            </div>
-            <div class="result-detail correct">
-                <i class="fas fa-check-circle"></i>
-                <span>All correct: ${correctSelected.join(', ')}</span>
-            </div>
-            <div class="streak-display">
-                <i class="fas fa-bolt"></i> Current streak: ${streak}
-            </div>
-        `;
+            </div>`;
     } else {
         streak = 0;
+        let summaryText = totalPointsChange >= 0 ? 
+            `+${totalPointsChange} net points (${pointsGained} earned, ${pointsPenalty} penalized)` :
+            `${totalPointsChange} net points (${pointsGained} earned, ${pointsPenalty} penalized)`;
+
         resultHTML += `
             <div class="result-score">
-                <h3>Your score: +${points} points</h3>
+                <i class="fas fa-dot-circle partial-icon"></i>
+                <div>
+                    <h3>Partial Result</h3>
+                    <p>${summaryText}</p>
+                </div>
             </div>
         `;
-        
-        if (correctCount > 0) {
-            resultHTML += `
-                <div class="result-detail correct">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Correct: ${correctSelected.join(', ')}</span>
-                </div>
-            `;
-        }
-        
-        if (incorrectCount > 0) {
-            resultHTML += `
-                <div class="result-detail incorrect">
-                    <i class="fas fa-times-circle"></i>
-                    <span>Incorrect: ${incorrectSelected.join(', ')}</span>
-                </div>
-            `;
-        }
-        
-        if (missedCountries.length > 0) {
-            resultHTML += `
-                <div class="result-detail missed">
-                    <i class="fas fa-question-circle"></i>
-                    <span>Missed: ${missedCountries.join(', ')}</span>
-                </div>
-            `;
-        }
+    }
+    document.getElementById('streak').textContent = streak;
+
+    // 4. Detailed Results (for incorrect/missed)
+    if (incorrectCount > 0) {
+        resultHTML += `<div class="result-detail incorrect"><i class="fas fa-times"></i> ${incorrectCount} Incorrect selection(s) (-${pointsPenalty} points)</div>`;
+    }
+    
+    const missedCount = currentQuestion.required - correctCount;
+    if (missedCount > 0) {
+        const missedCountries = Array.from(correctAnswers).filter(c => !selectedCountries.has(c));
+        resultHTML += `<div class="result-detail missed"><i class="fas fa-exclamation-triangle"></i> ${missedCount} Required country(s) missed: ${missedCountries.slice(0, 3).join(', ')}${missedCountries.length > 3 ? '...' : ''}</div>`;
     }
     
     resultHTML += `</div>`;
     document.getElementById('result').innerHTML = resultHTML;
+    
+    // 5. Update map colors and tags
+    const requiredCorrect = Array.from(selectedCountries).filter(c => correctAnswers.has(c)).slice(0, currentQuestion.required);
+    
+    const selectedTags = document.querySelectorAll('.country-tag');
+    selectedTags.forEach(tag => {
+        const countryName = tag.textContent;
+        if (correctAnswers.has(countryName)) {
+            tag.classList.add('correct-tag');
+            tag.classList.remove('incorrect-tag');
+        } else {
+            tag.classList.add('incorrect-tag');
+            tag.classList.remove('correct-tag');
+        }
+    });
+    
+    d3.selectAll(".country").each(function(d) {
+        const countryName = customCountryNames[d.properties.name] || d.properties.name;
+        
+        // Reset all classes before applying results
+        d3.select(this).classed("selected", false).classed("correct", false).classed("incorrect", false).classed("neutral", false).attr("opacity", 1);
 
-    document.getElementById('score').textContent = score;
-    document.getElementById('streak').textContent = streak;
+        if (correctAnswers.has(countryName)) {
+            if (selectedCountries.has(countryName)) {
+                // Correctly selected: highlight
+                d3.select(this).classed("correct", true).attr("fill", "var(--correct-color)");
+                
+                // Optional: Differentiate extra correct selections (e.g., lower opacity)
+                if (!requiredCorrect.includes(countryName)) {
+                    d3.select(this).attr("opacity", 0.6);
+                }
+            } else {
+                // Missed correct answer: neutral
+                d3.select(this).classed("neutral", true).attr("fill", "var(--neutral-color)").attr("opacity", 0.8);
+            }
+        } else if (selectedCountries.has(countryName)) {
+            // Incorrectly selected: wrong
+            d3.select(this).classed("incorrect", true).attr("fill", "var(--wrong-color)").attr("opacity", 0.8);
+        } else {
+            // Unselected and incorrect: reset to default
+            d3.select(this).attr("fill", "#3a86ff").attr("opacity", 1);
+        }
+    });
+
+    // 6. Final UI update
     document.getElementById('submit-answer').style.display = 'none';
+    document.getElementById('skip-question').style.display = 'none';
     document.getElementById('next-question').style.display = 'block';
+}
+
+function endGame() {
+    clearInterval(timer);
+    document.getElementById('question-text').textContent = "Game Over!";
+    document.getElementById('submit-answer').style.display = 'none';
+    document.getElementById('skip-question').style.display = 'none';
+    document.getElementById('next-question').style.display = 'none';
+    document.getElementById('result').innerHTML = `
+        <div class="result-header">
+            <i class="fas fa-trophy"></i>
+            <h3>Final Score: ${score} (High Score: ${highScore})</h3>
+        </div>
+    `;
 }
 
 function zoomIn() {
@@ -298,11 +598,13 @@ function resetView() {
 }
 
 window.addEventListener('load', function() {
+    loadProgress(); 
     initMap();
     loadQuestions();
 
     document.getElementById('submit-answer').addEventListener('click', checkAnswer);
     document.getElementById('next-question').addEventListener('click', loadNextQuestion);
+    document.getElementById('skip-question').addEventListener('click', skipQuestion); 
     document.getElementById('zoom-in').addEventListener('click', zoomIn);
     document.getElementById('reset-view').addEventListener('click', resetView);
 
