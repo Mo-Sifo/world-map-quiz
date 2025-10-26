@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World Map Quiz Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/css/flag-icon.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-globe-americas"></i> GeoQuiz Challenge</h1>
+            <p>Test your geography knowledge by selecting countries</p>
+        </header>
+        <div class="game-container">
+            <div id="question-panel">
+                <div class="question-header">
+                    <h2 id="question-text">Select a country to start</h2>
+                    <div class="timer">30s</div>
+                </div>
+                <div id="selected-countries">No countries selected</div>
+                <div class="button-group">
+                    <button id="submit-answer" disabled><i class="fas fa-check-circle"></i> Submit</button>
+                    <button id="skip-question"><i class="fas fa-forward"></i> Skip</button>
+                    <button id="next-question" style="display: none;"><i class="fas fa-arrow-right"></i> Next</button>
+                </div>
+                <div id="result"></div>
+                <div class="score-display">
+                    <div class="score-box">
+                        <span>Score</span>
+                        <span id="score">0</span>
+                    </div>
+                    <div class="streak-box">
+                        <span>Streak</span>
+                        <span id="streak">0</span>
+                    </div>
+                    <div class="score-box">
+                        <span>High Score</span>
+                        <span id="high-score">0</span>
+                    </div>
+                </div>
+            </div>
+            <div id="world-map"></div>
+            <div class="controls">
+                <button id="zoom-in" title="Zoom In"><i class="fas fa-search-plus"></i></button>
+                <button id="reset-view" title="Reset View"><i class="fas fa-expand"></i></button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
