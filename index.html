@@ -3,55 +3,417 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World Map Quiz Game</title>
-    <link rel="stylesheet" href="styles.css">
+    
+    <title>GeoQuiz Challenge - Fun World Map Geography Game</title>
+    <meta name="description" content="Test your geography skills with this free, interactive world map quiz game. Answer questions about history, culture, and more!">
+    <meta name="keywords" content="geography quiz, world map game, country quiz, map quiz, geoquiz, geography game, test geography knowledge">
+
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icon-css@3.5.0/css/flag-icon.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+
+
+    <style>
+        /* Re-using colors from your styles.css for consistency */
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3a0ca3;
+            --accent-color: #4cc9f0;
+            --background-dark: #1a1a2e;
+            --background-light: #16213e;
+            --text-light: #ffffff;
+            --text-muted: #b8c2cc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--background-dark), var(--background-light));
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden; /* Prevent horizontal scroll from animations */
+        }
+
+        /* --- REVERTED: Top Banner Styles --- */
+        .top-banner {
+            background: var(--background-dark);
+            color: var(--text-light);
+            padding: 12px 20px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative; /* Stays in page flow */
+            z-index: 10;
+            border-bottom: 1px solid var(--accent-color);
+        }
+
+        .shining-flag {
+            margin-left: 10px;
+            vertical-align: middle;
+            border-radius: 3px;
+            /* Glow Animation */
+            animation: shine 2s linear infinite alternate;
+        }
+
+        /* Shining/Glow Animation */
+        @keyframes shine {
+            0% {
+                box-shadow: 0 0 5px #fff, 0 0 10px #fff;
+            }
+            100% {
+                box-shadow: 0 0 10px #fff, 0 0 20px var(--accent-color), 0 0 25px var(--accent-color);
+            }
+        }
+        /* --- END REVERTED BANNER STYLES --- */
+
+
+        /* --- "Swimming Maps" Background Styles --- */
+        .animated-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; 
+            overflow: hidden; 
+        }
+
+        .animated-background i {
+            position: absolute;
+            color: var(--accent-color); 
+            font-size: 8rem; 
+            opacity: 0.05; 
+            animation: swim 45s linear infinite;
+        }
+
+        .animated-background i:nth-child(1) {
+            font-size: 12rem; top: 10%; left: 5%;
+            animation-duration: 50s; animation-delay: -5s;
+        }
+        .animated-background i:nth-child(2) {
+            font-size: 6rem; top: 20%; left: 80%;
+            animation-duration: 40s; animation-delay: -10s;
+            color: var(--primary-color);
+        }
+        .animated-background i:nth-child(3) {
+            font-size: 10rem; top: 70%; left: 15%;
+            animation-duration: 60s; animation-delay: -3s;
+        }
+        .animated-background i:nth-child(4) {
+            font-size: 14rem; top: 80%; left: 60%;
+            animation-duration: 45s; animation-delay: -15s;
+            color: var(--primary-color);
+        }
+        .animated-background i:nth-child(5) {
+            font-size: 7rem; top: 40%; left: 45%;
+            animation-duration: 55s; animation-delay: -2s;
+        }
+        .animated-background i:nth-child(6) {
+            font-size: 10rem; top: 5%; left: 40%;
+            animation-duration: 50s; animation-delay: -25s;
+        }
+
+        @keyframes swim {
+            0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.05; }
+            50% { transform: translateY(-20px) translateX(40px) rotate(180deg); opacity: 0.1; }
+            100% { transform: translateY(0) translateX(0) rotate(360deg); opacity: 0.05; }
+        }
+        /* --- END BACKGROUND STYLES --- */
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            position: relative; 
+            z-index: 1; 
+        }
+
+        header {
+            padding: 80px 20px 60px;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        header p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        section {
+            padding: 50px 20px;
+            background: rgba(22, 33, 62, 0.6); 
+            border-radius: 15px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(5px);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--text-light);
+            margin-bottom: 40px;
+        }
+
+        .how-to-play-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .step {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .step i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .step h3 { font-size: 1.4rem; margin-bottom: 10px; }
+        .step p { color: var(--text-muted); }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            text-align: left;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .feature-item i { font-size: 2rem; color: var(--primary-color); }
+
+        .modes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .mode-card {
+            display: block;
+            background: var(--primary-color);
+            padding: 30px 20px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: white;
+            font-size: 1.25rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .mode-card:hover {
+            background: var(--secondary-color);
+            transform: scale(1.05);
+        }
+        
+        .mode-card.history { background: #c94c4c; }
+        .mode-card.history:hover { background: #a63d3d; }
+        .mode-card.geography { background: #4cc97e; }
+        .mode-card.geography:hover { background: #3da667; }
+        .mode-card.language { background: #f9c74f; }
+        .mode-card.language:hover { background: #d1a842; }
+
+        .mode-card span {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        footer {
+            padding: 40px 20px;
+            margin-top: 10px;
+            background: rgba(22, 33, 62, 0.6);
+            border-radius: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-muted);
+        }
+        
+        footer p:first-child {
+            color: var(--text-light);
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        
+        /* Footer Link Style */
+        .footer-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .footer-link:hover {
+            color: var(--text-light);
+            text-shadow: 0 0 8px var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.5rem; }
+            .features-grid { grid-template-columns: 1fr; }
+            .animated-background i { font-size: 4rem; }
+        }
+    </style>
 </head>
 <body>
+
+    <div class="top-banner">
+        <span>Free Palestine</span>
+        <span class="flag-icon flag-icon-ps shining-flag"></span>
+    </div>
+
+    <div class="animated-background">
+        <i class="fas fa-globe-americas"></i>
+        <i class="fas fa-globe-asia"></i>
+        <i class="fas fa-globe-africa"></i>
+        <i class="fas fa-globe-americas"></i>
+        <i class="fas fa-globe-asia"></i>
+        <i class="fas fa-globe-africa"></i>
+    </div>
+
     <div class="container">
+        
         <header>
             <h1><i class="fas fa-globe-americas"></i> GeoQuiz Challenge</h1>
-            <p>Test your geography knowledge by selecting countries</p>
+            <p>Test your geography skills on an interactive world map.</p>
+            <a href="game.html" class="btn">Play Now!</a>
         </header>
-        <div class="game-container">
-            <div id="question-panel">
-                <div class="question-header">
-                    <h2 id="question-text">Select a country to start</h2>
-                    <div class="timer">30s</div>
-                </div>
-                <div id="selected-countries">No countries selected</div>
-                <div class="button-group">
-                    <button id="submit-answer" disabled><i class="fas fa-check-circle"></i> Submit</button>
-                    <button id="skip-question"><i class="fas fa-forward"></i> Skip</button>
-                    <button id="next-question" style="display: none;"><i class="fas fa-arrow-right"></i> Next</button>
-                </div>
-                <div id="result"></div>
-                <div class="score-display">
-                    <div class="score-box">
-                        <span>Score</span>
-                        <span id="score">0</span>
+
+        <main>
+            <section id="how-to-play">
+                <h2>How to Play</h2>
+                <div class="how-to-play-grid">
+                    <div class="step">
+                        <i class="fas fa-question-circle"></i>
+                        <h3>1. Read the Question</h3>
+                        <p>A question will appear asking you to find a set number of countries.</p>
                     </div>
-                    <div class="streak-box">
-                        <span>Streak</span>
-                        <span id="streak">0</span>
+                    <div class="step">
+                        <i class="fas fa-mouse-pointer"></i>
+                        <h3>2. Click the Map</h3>
+                        <p>Click countries on the interactive map to select them. Zoom and pan as needed.</p>
                     </div>
-                    <div class="score-box">
-                        <span>High Score</span>
-                        <span id="high-score">0</span>
+                    <div class="step">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>3. Submit & Score</h3>
+                        <p>Submit your answer before the timer runs out. Earn points for correct answers!</p>
+                    }
+                </div>
+            </section>
+
+            <section id="features">
+                <h2>Features</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <div>
+                            <h3>Fully Interactive Map</h3>
+                            <p>Zoom and drag your way across a detailed SVG world map to find every country.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-trophy"></i>
+                        <div>
+                            <h3>Personal High Score</h3>
+                            <p>Your best score is automatically saved in your browser. Beat your personal best!</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-brain"></i>
+                        <div>
+                            <h3>Multiple Categories</h3>
+                            <p>Test your knowledge on history, geography, language, culture, and more.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <i class="fas fa-bolt"></i>
+                        <div>
+                            <h3>Timer & Streak</h3>
+                            <p>Race against the clock and build your streak for perfect answers.</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div id="world-map"></div>
-            <div class="controls">
-                <button id="zoom-in" title="Zoom In"><i class="fas fa-search-plus"></i></button>
-                <button id="reset-view" title="Reset View"><i class="fas fa-expand"></i></button>
-            </div>
-        </div>
+            </section>
+
+            <section id="modes">
+                <h2>Choose Your Challenge</h2>
+                <p style="color: var(--text-muted); margin-bottom: 30px;">
+                    Select a mode to start playing.
+                </p>
+                <div class="modes-grid">
+                    <a href="game.html" class="mode-card">
+                        Endless Mode
+                        <span>All categories</span>
+                    </a>
+                    
+                    <a href="game.html?mode=history" class="mode-card history">
+                        History Quiz
+                        <span>Historical questions</span>
+                    </a>
+                    
+                    <a href="game.html?mode=geography" class="mode-card geography">
+                        Geography Quiz
+                        <span>Geography questions</span>
+                    </a>
+                    
+                    <a href="game.html?mode=language" class="mode-card language">
+                        Language Quiz
+                        <span>Language questions</span>
+                    </a>
+                </div>
+            </section>
+
+        </main>
+
+        <footer>
+            <p>Created by <a href="https://github.com/Mo-Sifo" target="_blank" rel="noopener noreferrer" class="footer-link">@MoSifo</a></p>
+            <p>&copy; 2025 GeoQuiz Challenge. All rights reserved.</p>
+        </footer>
+
     </div>
-    <script src="script.js"></script>
+
 </body>
 </html>
