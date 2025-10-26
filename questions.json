@@ -2,98 +2,1027 @@
     {
         "question": "Select 3 countries with standing Roman ruins",
         "required": 3,
-        "answer": ["Italy", "France", "Spain", "Algeria", "Tunisia", "Libya", "Morocco"],
+        "answer": ["Italy", "France", "Spain", "Algeria", "Tunisia", "Libya", "Morocco", "United Kingdom", "Greece", "Turkey", "Syria", "Jordan", "Lebanon", "Croatia", "Germany", "Austria"],
         "type": "Historical"
     },
     {
         "question": "Select 4 countries historically occupied by France",
         "required": 4,
-        "answer": ["Algeria", "Tunisia", "Morocco", "Syria", "Lebanon", "Mali", "Niger", "Chad", "Cameroon"],
+        "answer": ["Algeria", "Tunisia", "Morocco", "Syria", "Lebanon", "Mali", "Niger", "Chad", "Cameroon", "Vietnam", "Laos", "Cambodia", "Madagascar", "Senegal", "Haiti", "Côte d'Ivoire"],
         "type": "Historical"
     },
     {
         "question": "Select 2 countries occupied by Germany in the 20th century",
         "required": 2,
-        "answer": ["Namibia", "Cameroon", "Togo", "Rwanda", "Burundi"],
+        "answer": ["Namibia", "Cameroon", "Togo", "Rwanda", "Burundi", "Poland", "France", "Belgium", "Netherlands", "Norway", "Denmark", "Greece", "Serbia", "Austria"],
         "type": "Historical"
     },
     {
         "question": "Select 3 countries occupied by Italy",
         "required": 3,
-        "answer": ["Libya", "Somalia", "Eritrea", "Albania"],
+        "answer": ["Libya", "Somalia", "Eritrea", "Albania", "Ethiopia", "Greece", "Serbia"],
         "type": "Historical"
     },
     {
         "question": "Select 2 countries occupied by the Netherlands",
         "required": 2,
-        "answer": ["Indonesia", "Suriname", "Aruba", "Curaçao"],
+        "answer": ["Indonesia", "Suriname", "Aruba", "Curaçao", "South Africa", "Sri Lanka"],
         "type": "Historical"
     },
     {
         "question": "Select 3 countries occupied by Portugal",
         "required": 3,
-        "answer": ["Angola", "Mozambique", "Brazil", "Guinea-Bissau", "Timor-Leste"],
+        "answer": ["Angola", "Mozambique", "Brazil", "Guinea-Bissau", "East Timor", "Cabo Verde", "São Tomé and Principe"],
         "type": "Historical"
     },
     {
         "question": "Select 5 countries occupied by Spain",
         "required": 5,
-        "answer": ["Mexico", "Peru", "Colombia", "Argentina", "Chile", "Cuba", "Philippines", "Guatemala", "Costa Rica"],
+        "answer": ["Mexico", "Peru", "Colombia", "Argentina", "Chile", "Cuba", "Philippines", "Guatemala", "Costa Rica", "Dominican Rep.", "Venezuela", "Ecuador", "Bolivia", "Panama", "Puerto Rico", "Eq. Guinea", "W. Sahara"],
         "type": "Historical"
     },
     {
         "question": "Select 4 territories occupied by the United States",
         "required": 4,
-        "answer": ["Puerto Rico", "Guam", "American Samoa", "U.S. Virgin Islands", "Northern Mariana Islands"],
+        "answer": ["Puerto Rico", "Guam", "American Samoa", "U.S. Virgin Is.", "Northern Mariana Islands", "Philippines", "Cuba", "Haiti", "Dominican Rep.", "Panama", "Iraq", "Afghanistan"],
         "type": "Historical"
     },
     {
         "question": "Select 5 countries where Arabic is an official language",
         "required": 5,
-        "answer": ["Egypt", "Saudi Arabia", "Iraq", "Algeria", "Morocco", "Sudan","Libya", "Tunisia", "Syria", "Yemen", "Jordan"],
+        "answer": ["Egypt", "Saudi Arabia", "Iraq", "Algeria", "Morocco", "Sudan", "Libya", "Tunisia", "Syria", "Yemen", "Jordan", "Lebanon", "Kuwait", "Qatar", "Bahrain", "Oman", "United Arab Emirates", "Mauritania", "Somalia", "Djibouti", "Comoros"],
         "type": "Language"
     },
     {
         "question": "Select 3 countries where French is an official language",
         "required": 3,
-        "answer": ["France", "Canada", "Belgium", "Switzerland", "Algeria", "Morocco", "Tunisia", "Madagascar"],
+        "answer": ["France", "Canada", "Belgium", "Switzerland", "Madagascar", "Dem. Rep. Congo", "Cameroon", "Haiti", "Luxembourg", "Monaco", "Côte d'Ivoire", "Senegal", "Mali", "Niger", "Chad", "Burundi", "Rwanda", "Vanuatu", "Seychelles", "Djibouti"],
         "type": "Language"
     },
     {
         "question": "Select 5 countries where Spanish is an official language",
         "required": 5,
-        "answer": ["Spain", "Mexico", "Argentina", "Colombia", "Peru", "Chile", "Cuba", "Venezuela", "Ecuador"],
+        "answer": ["Spain", "Mexico", "Argentina", "Colombia", "Peru", "Chile", "Cuba", "Venezuela", "Ecuador", "Bolivia", "Paraguay", "Uruguay", "Guatemala", "Honduras", "El Salvador", "Nicaragua", "Costa Rica", "Panama", "Dominican Rep.", "Puerto Rico", "Eq. Guinea"],
         "type": "Language"
     },
     {
         "question": "Select 3 countries where Portuguese is an official language",
         "required": 3,
-        "answer": ["Portugal", "Brazil", "Angola", "Mozambique", "Guinea-Bissau", "East Timor"],
+        "answer": ["Portugal", "Brazil", "Angola", "Mozambique", "Guinea-Bissau", "Timor-Leste", "Cabo Verde", "São Tomé and Principe"],
         "type": "Language"
     },
     {
         "question": "Select 4 countries where English is an official language",
         "required": 4,
-        "answer": ["United States", "Canada", "Australia", "United Kingdom", "India", "South Africa", "Ireland", "New Zealand"],
+        "answer": ["United States of America", "Canada", "Australia", "United Kingdom", "India", "South Africa", "Ireland", "New Zealand", "Nigeria", "Philippines", "Jamaica", "Singapore", "Malta", "Kenya", "Pakistan", "S. Sudan"],
         "type": "Language"
     },
     {
         "question": "Select 2 countries where Dutch is an official language",
         "required": 2,
-        "answer": ["Netherlands", "Belgium", "Suriname", "Aruba"],
+        "answer": ["Netherlands", "Belgium", "Suriname", "Aruba", "Curaçao", "Sint Maarten"],
         "type": "Language"
     },
     {
         "question": "Select 7 countries that use the Euro as their currency",
         "required": 7,
-        "answer": ["Germany", "France", "Italy", "Spain", "Portugal", "Netherlands", "Belgium", "Austria", "Ireland", "Greece", "Finland"],
+        "answer": ["Germany", "France", "Italy", "Spain", "Portugal", "Netherlands", "Belgium", "Austria", "Ireland", "Greece", "Finland", "Luxembourg", "Slovakia", "Slovenia", "Lithuania", "Latvia", "Estonia", "Cyprus", "Malta", "Croatia"],
         "type": "Currency"
     },
     {
-    "question": "Select 2 countries that have nuclear weapons",
-    "required": 2,
-    "answer": ["United States", "Russia", "China", "France", "United Kingdom", "India", "Pakistan", "North Korea"],
-    "type": "Political"
-  }
-    
+        "question": "Select 2 countries that have nuclear weapons",
+        "required": 2,
+        "answer": ["United States of America", "Russia", "China", "France", "United Kingdom", "India", "Pakistan", "North Korea"],
+        "type": "Political"
+    },
+    {
+        "question": "Select 3 countries that are part of the G7",
+        "required": 3,
+        "answer": ["United States of America", "Canada", "France", "Germany", "Italy", "Japan", "United Kingdom"],
+        "type": "Political"
+    },
+    {
+        "question": "Select 4 countries that border the Black Sea",
+        "required": 4,
+        "answer": ["Turkey", "Russia", "Ukraine", "Romania", "Bulgaria", "Georgia"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 3 countries that are part of the BRICS group",
+        "required": 3,
+        "answer": ["Brazil", "Russia", "India", "China", "South Africa", "Egypt", "Ethiopia", "Iran", "Saudi Arabia", "United Arab Emirates"],
+        "type": "Political"
+    },
+    {
+        "question": "Select 6 countries that are islands",
+        "required": 4,
+        "answer": ["Madagascar", "Sri Lanka", "Japan", "Cuba", "Iceland", "Ireland", "Philippines", "Indonesia", "New Zealand", "United Kingdom", "Jamaica", "Malta", "Cyprus", "Bahamas", "Fiji", "Haiti", "Dominican Rep.", "Maldives"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 3 countries that are Transcontinental (exist on more than one continent)",
+        "required": 3,
+        "answer": ["Russia", "Turkey", "Kazakhstan", "Egypt", "United States of America"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 3 countries where German is an official language",
+        "required": 3,
+        "answer": ["Germany", "Austria", "Switzerland", "Belgium", "Luxembourg", "Liechtenstein"],
+        "type": "Language"
+    },
+    {
+        "question": "Select 5 countries whose flag contains the color green and yellow",
+        "required": 5,
+        "answer": ["Brazil", "India", "Mexico", "South Africa", "Jamaica", "Cameroon", "Gabon", "Senegal", "Guinea", "Ethiopia", "Lithuania", "Myanmar", "Ghana", "Bolivia", "Vanuatu", "Guyana"],
+        "type": "Culture"
+    },
+    {
+        "question": "Select 2 countries that are the world's largest producers of Coffee",
+        "required": 2,
+        "answer": ["Brazil", "Vietnam", "Colombia", "Indonesia", "Ethiopia", "Honduras"],
+        "type": "Culture"
+    },
+    {
+        "question": "Select 5 largest countries by area",
+        "required": 5,
+        "answer": ["Russia", "Canada", "China", "United States", "Brazil", "Australia", "India", "Argentina", "Kazakhstan", "Algeria"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 5 largest countries by population",
+        "required": 5,
+        "answer": ["India", "China", "United States", "Indonesia", "Pakistan", "Nigeria", "Brazil", "Bangladesh", "Russia", "Mexico"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 3 smallest countries by area",
+        "required": 3,
+        "answer": ["Vatican City", "Monaco", "Nauru", "Tuvalu", "San Marino", "Liechtenstein", "Marshall Islands", "Saint Kitts and Nevis", "Maldives", "Malta"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 3 smallest countries by population",
+        "required": 3,
+        "answer": ["Vatican City", "Nauru", "Tuvalu", "Palau", "San Marino", "Liechtenstein", "Monaco", "Saint Kitts and Nevis", "Marshall Islands", "Dominica"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 10 countries with GDP more than 1 trillion USD",
+        "required": 10,
+        "answer": ["United States", "China", "Germany", "India", "Japan", "United Kingdom", "France", "Italy", "Canada", "Brazil", "Russia", "South Korea", "Australia", "Mexico", "Spain", "Indonesia", "Netherlands", "Turkey", "Saudi Arabia", "Switzerland"],
+        "type": "Economy"
+    },
+    {
+        "question": "Select 3 top economies by nominal GDP",
+        "required": 3,
+        "answer": ["United States", "China", "Germany", "India", "Japan"],
+        "type": "Economy"
+    },
+    {
+        "question": "Select 4 most visited countries by tourists",
+        "required": 4,
+        "answer": ["France", "Spain", "United States", "China", "Italy", "Turkey", "Mexico", "Germany", "United Kingdom", "Thailand"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 6 countries that have deserts",
+        "required": 6,
+        "answer": ["Saudi Arabia", "Egypt", "Libya", "Algeria", "Tunisia", "Morocco", "Sudan", "Chad", "Niger", "Mali", "Mauritania", "Australia", "United States", "China", "Mexico", "Peru", "Chile", "Namibia", "Botswana", "South Africa", "Mongolia", "Pakistan", "Kazakhstan", "Iran", "Iraq", "Jordan", "United Arab Emirates", "Syria", "Oman"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 3 coldest countries",
+        "required": 3,
+        "answer": ["Russia", "Canada", "Mongolia", "Iceland", "Norway", "Finland", "Sweden", "Kazakhstan", "Estonia", "United States"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 4 countries once part of the British Empire",
+        "required": 4,
+        "answer": ["India", "Pakistan", "Bangladesh", "Canada", "Australia", "New Zealand", "South Africa", "Nigeria", "Kenya", "Egypt", "Sudan", "United States of America", "Ireland"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select 3 countries once part of the Soviet Union",
+        "required": 3,
+        "answer": ["Russia", "Ukraine", "Belarus", "Kazakhstan", "Uzbekistan", "Lithuania", "Latvia", "Estonia", "Georgia", "Armenia", "Azerbaijan", "Moldova"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select 2 countries that were part of the Axis powers in WWII",
+        "required": 2,
+        "answer": ["Germany", "Italy", "Japan", "Hungary", "Romania", "Bulgaria"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select 3 countries once part of the Incan Empire",
+        "required": 3,
+        "answer": ["Peru", "Ecuador", "Bolivia", "Chile", "Argentina", "Colombia"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select 3 countries with Mayan ruins",
+        "required": 3,
+        "answer": ["Mexico", "Guatemala", "Belize", "Honduras", "El Salvador"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select 4 countries along the historic Silk Road",
+        "required": 4,
+        "answer": ["China", "Italy", "Turkey", "Iran", "Uzbekistan", "Kazakhstan", "Syria", "Iraq"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select 3 countries once part of the Persian Empire",
+        "required": 3,
+        "answer": ["Iran", "Iraq", "Turkey", "Egypt", "Greece", "Afghanistan", "Pakistan"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select 4 countries once part of the Mongol Empire",
+        "required": 4,
+        "answer": ["China", "Russia", "Mongolia", "Iran", "Iraq", "Kazakhstan", "Ukraine", "Pakistan", "Afghanistan"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select 3 countries that were part of the original NATO (1949)",
+        "required": 3,
+        "answer": ["United States of America", "United Kingdom", "France", "Canada", "Italy", "Portugal", "Netherlands", "Belgium", "Luxembourg", "Denmark", "Norway", "Iceland"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select 3 countries once part of the Austro-Hungarian Empire",
+        "required": 3,
+        "answer": ["Austria", "Hungary", "Czechia", "Slovakia", "Croatia", "Slovenia", "Bosnia and Herz.", "Poland", "Romania", "Ukraine", "Serbia", "Italy"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select 4 countries that gained independence in the 1960s",
+        "required": 4,
+        "answer": ["Nigeria", "Kenya", "Dem. Rep. Congo", "Algeria", "Senegal", "Mali", "Madagascar", "Somalia", "Uganda", "Tanzania", "Cyprus", "Jamaica"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select 3 countries that were part of former Yugoslavia",
+        "required": 3,
+        "answer": ["Serbia", "Croatia", "Slovenia", "Bosnia and Herz.", "Montenegro", "North Macedonia", "Kosovo"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select 3 countries from the original EEC (1957)",
+        "required": 3,
+        "answer": ["France", "Germany", "Italy", "Belgium", "Netherlands", "Luxembourg"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select 2 countries famous for Renaissance art",
+        "required": 2,
+        "answer": ["Italy", "France", "Netherlands", "Germany", "Belgium", "Spain"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select 3 countries part of the Viking homelands",
+        "required": 3,
+        "answer": ["Norway", "Sweden", "Denmark", "Iceland"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select 2 countries involved in the Hundred Years' War",
+        "required": 2,
+        "answer": ["France", "United Kingdom"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select 3 countries once part of the Ottoman Empire",
+        "required": 3,
+        "answer": ["Turkey", "Greece", "Egypt", "Iraq", "Syria", "Lebanon", "Jordan", "Saudi Arabia", "Hungary", "Romania", "Bulgaria", "Serbia", "Algeria"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select 3 countries that were part of the Allied powers in WWI",
+        "required": 3,
+        "answer": ["France", "United Kingdom", "Russia", "United States of America", "Italy", "Japan", "Serbia", "Romania", "Greece"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select 2 countries that were part of the Central Powers in WWI",
+        "required": 2,
+        "answer": ["Germany", "Austria", "Hungary", "Turkey", "Bulgaria"],
+        "type": "Historical"
+    },
+    {
+        "question": "Select 3 countries where Italian is an official language",
+        "required": 3,
+        "answer": ["Italy", "Switzerland", "San Marino", "Vatican City", "Croatia", "Slovenia"],
+        "type": "Language"
+    },
+    {
+        "question": "Select 3 countries where Russian is an official language",
+        "required": 3,
+        "answer": ["Russia", "Belarus", "Kazakhstan", "Kyrgyzstan"],
+        "type": "Language"
+    },
+    {
+        "question": "Select 3 countries in South America where Spanish is NOT official",
+        "required": 3,
+        "answer": ["Brazil", "Suriname", "Guyana", "France"],
+        "type": "Language"
+    },
+    {
+        "question": "Select 4 countries in Africa where French is an official language",
+        "required": 4,
+        "answer": ["Senegal", "Côte d'Ivoire", "Mali", "Dem. Rep. Congo", "Cameroon", "Madagascar", "Niger", "Chad", "Rwanda", "Burundi", "Benin", "Togo"],
+        "type": "Language"
+    },
+    {
+        "question": "Select 4 countries where a Germanic language is official",
+        "required": 4,
+        "answer": ["Germany", "Austria", "United Kingdom", "Netherlands", "Sweden", "Denmark", "Norway", "Iceland", "Belgium", "Switzerland", "Luxembourg"],
+        "type": "Language"
+    },
+    {
+        "question": "Select 4 countries where a Slavic language is official",
+        "required": 4,
+        "answer": ["Russia", "Poland", "Czechia", "Ukraine", "Serbia", "Croatia", "Slovenia", "Bulgaria", "Belarus", "Slovakia"],
+        "type": "Language"
+    },
+    {
+        "question": "Select 4 countries where a Romance language is official",
+        "required": 4,
+        "answer": ["France", "Spain", "Italy", "Portugal", "Romania", "Brazil", "Mexico", "Argentina", "Belgium", "Switzerland", "Canada"],
+        "type": "Language"
+    },
+    {
+        "question": "Select 5 countries with more than one official language",
+        "required": 5,
+        "answer": ["Canada", "Switzerland", "Belgium", "India", "South Africa", "Nigeria", "Pakistan", "Singapore", "Kenya", "Afghanistan"],
+        "type": "Language"
+    },
+    {
+        "question": "Select 3 countries where Swahili is an official language",
+        "required": 3,
+        "answer": ["Tanzania", "Kenya", "Uganda", "Rwanda", "Dem. Rep. Congo"],
+        "type": "Language"
+    },
+    {
+        "question": "Select 3 countries where a Scandinavian language is official",
+        "required": 3,
+        "answer": ["Sweden", "Denmark", "Norway", "Finland", "Iceland"],
+        "type": "Language"
+    },
+    {
+        "question": "Select 2 countries where Urdu is an official language",
+        "required": 2,
+        "answer": ["Pakistan", "India"],
+        "type": "Language"
+    },
+    {
+        "question": "Select 2 countries where Bengali is an official language",
+        "required": 2,
+        "answer": ["Bangladesh", "India"],
+        "type": "Language"
+    },
+    {
+        "question": "Select 3 countries where Farsi (Persian) is an official language",
+        "required": 3,
+        "answer": ["Iran", "Afghanistan", "Tajikistan"],
+        "type": "Language"
+    },
+    {
+        "question": "Select 4 countries in Asia where English is an official language",
+        "required": 4,
+        "answer": ["India", "Pakistan", "Philippines", "Singapore", "Malaysia", "Sri Lanka"],
+        "type": "Language"
+    },
+    {
+        "question": "Select 2 countries where Korean is the official language",
+        "required": 2,
+        "answer": ["North Korea", "South Korea"],
+        "type": "Language"
+    },
+    {
+        "question": "Select 2 countries where Turkish is an official language",
+        "required": 2,
+        "answer": ["Turkey", "Cyprus"],
+        "type": "Language"
+    },
+    {
+        "question": "Select 2 countries where Greek is an official language",
+        "required": 2,
+        "answer": ["Greece", "Cyprus"],
+        "type": "Language"
+    },
+    {
+        "question": "Select 4 countries that officially use the Cyrillic alphabet",
+        "required": 4,
+        "answer": ["Russia", "Ukraine", "Bulgaria", "Serbia", "Mongolia", "Belarus", "Kazakhstan", "Kyrgyzstan", "North Macedonia"],
+        "type": "Language"
+    },
+    {
+        "question": "Select 5 countries that officially use the Arabic alphabet",
+        "required": 5,
+        "answer": ["Saudi Arabia", "Egypt", "Iran", "Pakistan", "Iraq", "Algeria", "Afghanistan", "Sudan"],
+        "type": "Language"
+    },
+    {
+        "question": "Select 3 countries in Oceania where English is an official language",
+        "required": 3,
+        "answer": ["Australia", "New Zealand", "Fiji", "Papua New Guinea", "Samoa", "Vanuatu"],
+        "type": "Language"
+    },
+    {
+        "question": "Select 3 countries that use the US Dollar (USD) as official currency",
+        "required": 3,
+        "answer": ["United States of America", "Ecuador", "El Salvador", "Panama", "Timor-Leste", "Marshall Islands", "Micronesia", "Palau"],
+        "type": "Currency"
+    },
+    {
+        "question": "Select 3 countries that use a 'Pound' as their currency",
+        "required": 3,
+        "answer": ["United Kingdom", "Egypt", "Lebanon", "Sudan", "S. Sudan", "Syria"],
+        "type": "Currency"
+    },
+    {
+        "question": "Select 4 countries that use a 'Dinar' as their currency",
+        "required": 4,
+        "answer": ["Algeria", "Bahrain", "Iraq", "Jordan", "Kuwait", "Serbia", "Tunisia", "Libya"],
+        "type": "Currency"
+    },
+    {
+        "question": "Select 3 countries that use a 'Franc' as their currency",
+        "required": 3,
+        "answer": ["Switzerland", "Dem. Rep. Congo", "Senegal", "Cameroon", "Mali", "Niger", "Chad", "Côte d'Ivoire", "Rwanda", "Burundi", "Liechtenstein"],
+        "type": "Currency"
+    },
+    {
+        "question": "Select 4 countries that use a 'Rupee' or 'Rupiah'",
+        "required": 4,
+        "answer": ["India", "Pakistan", "Sri Lanka", "Nepal", "Indonesia", "Maldives", "Mauritius", "Seychelles"],
+        "type": "Currency"
+    },
+    {
+        "question": "Select 5 countries that use a 'Peso' as their currency",
+        "required": 5,
+        "answer": ["Mexico", "Argentina", "Philippines", "Colombia", "Chile", "Cuba", "Dominican Rep.", "Uruguay"],
+        "type": "Currency"
+    },
+    {
+        "question": "Select 3 countries in Asia that use a 'Dollar'",
+        "required": 3,
+        "answer": ["Singapore", "Brunei", "Taiwan", "Timor-Leste"],
+        "type": "Currency"
+    },
+    {
+        "question": "Select 4 countries that use a 'Crown' (Krone/Krona)",
+        "required": 4,
+        "answer": ["Sweden", "Norway", "Denmark", "Czechia", "Iceland"],
+        "type": "Currency"
+    },
+    {
+        "question": "Select 4 countries that use a 'Real', 'Rial', or 'Riyal'",
+        "required": 4,
+        "answer": ["Brazil", "Iran", "Saudi Arabia", "Oman", "Qatar", "Yemen", "Cambodia"],
+        "type": "Currency"
+    },
+    {
+        "question": "Select 2 countries that use the 'Won'",
+        "required": 2,
+        "answer": ["South Korea", "North Korea"],
+        "type": "Currency"
+    },
+    {
+        "question": "Select 3 countries that use the 'Shilling'",
+        "required": 3,
+        "answer": ["Kenya", "Uganda", "Tanzania", "Somalia"],
+        "type": "Currency"
+    },
+    {
+        "question": "Select 2 countries that use the 'Manat'",
+        "required": 2,
+        "answer": ["Azerbaijan", "Turkmenistan"],
+        "type": "Currency"
+    },
+    {
+        "question": "Select 2 countries that use the 'Ruble'",
+        "required": 2,
+        "answer": ["Russia", "Belarus"],
+        "type": "Currency"
+    },
+    {
+        "question": "Select 4 countries in Europe that do NOT use the Euro",
+        "required": 4,
+        "answer": ["United Kingdom", "Switzerland", "Norway", "Sweden", "Poland", "Czechia", "Hungary", "Denmark", "Russia", "Ukraine", "Romania", "Bulgaria"],
+        "type": "Currency"
+    },
+    {
+        "question": "Select 4 countries that use the West African CFA Franc",
+        "required": 4,
+        "answer": ["Senegal", "Mali", "Niger", "Côte d'Ivoire", "Burkina Faso", "Benin", "Togo", "Guinea-Bissau"],
+        "type": "Currency"
+    },
+    {
+        "question": "Select 4 countries that use the Central African CFA Franc",
+        "required": 4,
+        "answer": ["Cameroon", "Chad", "Gabon", "Eq. Guinea", "Central African Rep.", "Congo"],
+        "type": "Currency"
+    },
+    {
+        "question": "Select 2 countries that use the 'Dirham'",
+        "required": 2,
+        "answer": ["Morocco", "United Arab Emirates"],
+        "type": "Currency"
+    },
+    {
+        "question": "Select 2 countries that use the 'Som'",
+        "required": 2,
+        "answer": ["Kyrgyzstan", "Uzbekistan"],
+        "type": "Currency"
+    },
+    {
+        "question": "Select 1 country that uses the 'Złoty'",
+        "required": 1,
+        "answer": ["Poland"],
+        "type": "Currency"
+    },
+    {
+        "question": "Select 1 country that uses the 'Baht'",
+        "required": 1,
+        "answer": ["Thailand"],
+        "type": "Currency"
+    },
+    {
+        "question": "Select 5 permanent members of the UN Security Council",
+        "required": 5,
+        "answer": ["United States of America", "United Kingdom", "France", "Russia", "China"],
+        "type": "Political"
+    },
+    {
+        "question": "Select 5 countries that are members of the G20",
+        "required": 5,
+        "answer": ["United States of America", "China", "Germany", "India", "Brazil", "United Kingdom", "France", "Italy", "Canada", "Russia", "Japan", "South Korea", "Australia", "Mexico", "Indonesia", "Turkey", "Saudi Arabia", "South Africa", "Argentina"],
+        "type": "Political"
+    },
+    {
+        "question": "Select 6 countries that are members of NATO",
+        "required": 6,
+        "answer": ["United States of America", "United Kingdom", "France", "Germany", "Turkey", "Canada", "Italy", "Spain", "Poland", "Netherlands", "Belgium", "Norway", "Denmark", "Portugal", "Sweden", "Finland"],
+        "type": "Political"
+    },
+    {
+        "question": "Select 6 countries that are members of the European Union",
+        "required": 6,
+        "answer": ["France", "Germany", "Spain", "Italy", "Poland", "Sweden", "Netherlands", "Belgium", "Ireland", "Austria", "Greece", "Portugal", "Czechia", "Hungary", "Romania"],
+        "type": "Political"
+    },
+    {
+        "question": "Select 4 countries that are members of ASEAN",
+        "required": 4,
+        "answer": ["Indonesia", "Vietnam", "Thailand", "Philippines", "Malaysia", "Singapore", "Myanmar", "Cambodia", "Laos", "Brunei"],
+        "type": "Political"
+    },
+    {
+        "question": "Select 5 countries that are members of the African Union",
+        "required": 5,
+        "answer": ["South Africa", "Nigeria", "Egypt", "Ethiopia", "Kenya", "Algeria", "Morocco", "Ghana", "Senegal", "Tanzania", "Dem. Rep. Congo"],
+        "type": "Political"
+    },
+    {
+        "question": "Select 5 countries that are members of the Arab League",
+        "required": 5,
+        "answer": ["Egypt", "Saudi Arabia", "Iraq", "Algeria", "Morocco", "Sudan", "United Arab Emirates", "Syria", "Tunisia", "Jordan", "Lebanon", "Libya", "Yemen", "Kuwait"],
+        "type": "Political"
+    },
+    {
+        "question": "Select 4 countries that are members of OPEC",
+        "required": 4,
+        "answer": ["Saudi Arabia", "Iraq", "Iran", "United Arab Emirates", "Venezuela", "Kuwait", "Nigeria", "Libya", "Congo", "Gabon", "Eq. Guinea", "Algeria"],
+        "type": "Political"
+    },
+    {
+        "question": "Select 4 countries that are Federal Republics",
+        "required": 4,
+        "answer": ["United States of America", "Germany", "Brazil", "Mexico", "Russia", "India", "Pakistan", "Nigeria", "Switzerland", "Austria", "Argentina"],
+        "type": "Political"
+    },
+    {
+        "question": "Select 4 countries that are Constitutional Monarchies",
+        "required": 4,
+        "answer": ["United Kingdom", "Japan", "Spain", "Sweden", "Canada", "Australia", "New Zealand", "Netherlands", "Belgium", "Norway", "Denmark", "Thailand", "Malaysia"],
+        "type": "Political"
+    },
+    {
+        "question": "Select 5 landlocked countries",
+        "required": 5,
+        "answer": ["Austria", "Switzerland", "Bolivia", "Mongolia", "Chad", "Niger", "Mali", "Zambia", "Zimbabwe", "Botswana", "Paraguay", "Luxembourg", "Czechia", "Slovakia", "Hungary", "Serbia", "Afghanistan", "Nepal", "Bhutan"],
+        "type": "Political"
+    },
+    {
+        "question": "Select 5 members of the Commonwealth of Nations",
+        "required": 5,
+        "answer": ["United Kingdom", "Canada", "Australia", "New Zealand", "India", "Pakistan", "South Africa", "Nigeria", "Kenya", "Ghana", "Malaysia", "Singapore", "Jamaica"],
+        "type": "Political"
+    },
+    {
+        "question": "Select 4 members of the Shanghai Cooperation Organisation (SCO)",
+        "required": 4,
+        "answer": ["China", "Russia", "India", "Pakistan", "Iran", "Kazakhstan", "Kyrgyzstan", "Tajikistan", "Uzbekistan"],
+        "type": "Political"
+    },
+    {
+        "question": "Select 4 countries that are members of Mercosur",
+        "required": 4,
+        "answer": ["Brazil", "Argentina", "Paraguay", "Uruguay", "Bolivia", "Venezuela"],
+        "type": "Political"
+    },
+    {
+        "question": "Select 3 countries that are officially neutral",
+        "required": 3,
+        "answer": ["Switzerland", "Austria", "Ireland", "Costa Rica", "Turkmenistan", "Malta"],
+        "type": "Political"
+    },
+    {
+        "question": "Select 4 countries with a parliamentary system",
+        "required": 4,
+        "answer": ["United Kingdom", "Canada", "Australia", "India", "Germany", "Italy", "Japan", "Spain", "Sweden", "Norway", "Denmark", "Israel"],
+        "type": "Political"
+    },
+    {
+        "question": "Select 4 countries with a presidential system",
+        "required": 4,
+        "answer": ["United States of America", "Brazil", "Mexico", "Indonesia", "Nigeria", "Argentina", "Chile", "Colombia", "South Korea", "Turkey", "Philippines"],
+        "type": "Political"
+    },
+    {
+        "question": "Select 5 members of the OECD",
+        "required": 5,
+        "answer": ["United States of America", "Germany", "Japan", "United Kingdom", "France", "Canada", "Australia", "South Korea", "Italy", "Spain", "Mexico", "Turkey", "Switzerland", "Sweden"],
+        "type": "Political"
+    },
+    {
+        "question": "Select 5 members of APEC",
+        "required": 5,
+        "answer": ["United States of America", "China", "Japan", "Australia", "Canada", "Russia", "Mexico", "South Korea", "Indonesia", "Singapore", "Thailand", "Chile", "Peru"],
+        "type": "Political"
+    },
+    {
+        "question": "Select 2 absolute monarchies",
+        "required": 2,
+        "answer": ["Saudi Arabia", "Oman", "Brunei", "Eswatini", "Vatican City", "United Arab Emirates", "Qatar"],
+        "type": "Political"
+    },
+    {
+        "question": "Select 6 countries that border the Mediterranean Sea",
+        "required": 6,
+        "answer": ["Spain", "France", "Italy", "Greece", "Turkey", "Egypt", "Libya", "Algeria", "Morocco", "Tunisia", "Croatia", "Albania", "Syria", "Lebanon", "Israel", "Cyprus", "Malta"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 4 countries that contain part of the Amazon Rainforest",
+        "required": 4,
+        "answer": ["Brazil", "Peru", "Colombia", "Ecuador", "Bolivia", "Venezuela", "Guyana", "Suriname", "France"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 4 countries that contain part of the Himalayas",
+        "required": 4,
+        "answer": ["India", "China", "Nepal", "Bhutan", "Pakistan"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 4 countries that border the Andes Mountains",
+        "required": 4,
+        "answer": ["Chile", "Argentina", "Peru", "Bolivia", "Ecuador", "Colombia", "Venezuela"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 6 countries that border the Atlantic Ocean",
+        "required": 6,
+        "answer": ["United States of America", "Canada", "Brazil", "Argentina", "United Kingdom", "France", "Spain", "Portugal", "Nigeria", "South Africa", "Morocco", "Senegal", "Ireland"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 6 countries that border the Pacific Ocean",
+        "required": 6,
+        "answer": ["United States of America", "Canada", "Mexico", "Chile", "Peru", "China", "Japan", "Australia", "Russia", "Indonesia", "Philippines", "New Zealand", "Colombia"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 5 countries that border the Indian Ocean",
+        "required": 5,
+        "answer": ["India", "Australia", "Indonesia", "South Africa", "Tanzania", "Kenya", "Pakistan", "Iran", "Thailand", "Malaysia", "Madagascar", "Mozambique", "Somalia"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 4 countries that border the Arctic Ocean",
+        "required": 4,
+        "answer": ["Russia", "Canada", "United States of America", "Norway", "Denmark", "Iceland"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 4 countries that border the Alps",
+        "required": 4,
+        "answer": ["France", "Switzerland", "Italy", "Austria", "Germany", "Slovenia", "Liechtenstein", "Monaco"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 6 countries in the Southern Hemisphere",
+        "required": 6,
+        "answer": ["Australia", "New Zealand", "South Africa", "Brazil", "Argentina", "Chile", "Peru", "Indonesia", "Madagascar", "Uruguay", "Paraguay", "Bolivia"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 5 countries the Equator passes through",
+        "required": 5,
+        "answer": ["Ecuador", "Colombia", "Brazil", "Gabon", "Congo", "Dem. Rep. Congo", "Kenya", "Indonesia", "Somalia", "Uganda", "Maldives"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 4 countries the Prime Meridian (0° longitude) passes through",
+        "required": 4,
+        "answer": ["United Kingdom", "France", "Spain", "Algeria", "Mali", "Burkina Faso", "Togo", "Ghana"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 3 countries that border the Caspian Sea",
+        "required": 3,
+        "answer": ["Russia", "Iran", "Kazakhstan", "Azerbaijan", "Turkmenistan"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 4 countries that border the Red Sea",
+        "required": 4,
+        "answer": ["Egypt", "Saudi Arabia", "Sudan", "Yemen", "Eritrea", "Djibouti", "Israel", "Jordan"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 5 countries that border the Baltic Sea",
+        "required": 5,
+        "answer": ["Sweden", "Finland", "Poland", "Germany", "Russia", "Denmark", "Estonia", "Latvia", "Lithuania"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 4 countries that border the Persian Gulf",
+        "required": 4,
+        "answer": ["Iran", "Iraq", "Saudi Arabia", "United Arab Emirates", "Qatar", "Kuwait", "Bahrain", "Oman"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 5 countries that contain volcanoes",
+        "required": 5,
+        "answer": ["Japan", "Indonesia", "United States of America", "Italy", "Chile", "Iceland", "Philippines", "Mexico", "Russia", "New Zealand", "Ecuador"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 3 countries with fjords",
+        "required": 3,
+        "answer": ["Norway", "Chile", "New Zealand", "Canada", "Iceland", "United States of America", "Denmark"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 4 European microstates",
+        "required": 4,
+        "answer": ["Vatican City", "Monaco", "San Marino", "Liechtenstein", "Andorra", "Malta", "Luxembourg"],
+        "type": "Geography"
+    },
+    {
+        "question": "Select 4 countries famous for their beer",
+        "required": 4,
+        "answer": ["Germany", "Belgium", "Czechia", "Ireland", "United States of America", "United Kingdom", "Netherlands", "Mexico"],
+        "type": "Culture"
+    },
+    {
+        "question": "Select 4 countries famous for their wine",
+        "required": 4,
+        "answer": ["France", "Italy", "Spain", "Argentina", "United States of America", "Chile", "Australia", "South Africa", "Germany", "Portugal"],
+        "type": "Culture"
+    },
+    {
+        "question": "Select 4 countries where Buddhism is a major religion",
+        "required": 4,
+        "answer": ["Thailand", "Cambodia", "Myanmar", "Japan", "Sri Lanka", "Vietnam", "Laos", "Bhutan", "China", "Mongolia"],
+        "type": "Culture"
+    },
+    {
+        "question": "Select 3 countries where Hinduism is a major religion",
+        "required": 3,
+        "answer": ["India", "Nepal", "Mauritius", "Bangladesh", "Fiji"],
+        "type": "Culture"
+    },
+    {
+        "question": "Select 4 countries where Orthodox Christianity is a major religion",
+        "required": 4,
+        "answer": ["Russia", "Greece", "Romania", "Serbia", "Ukraine", "Bulgaria", "Georgia", "Belarus", "Cyprus", "Ethiopia"],
+        "type": "Culture"
+    },
+    {
+        "question": "Select 6 countries where Islam is a major religion",
+        "required": 6,
+        "answer": ["Indonesia", "Pakistan", "India", "Bangladesh", "Nigeria", "Egypt", "Iran", "Turkey", "Algeria", "Iraq", "Saudi Arabia", "Morocco", "Afghanistan", "Sudan"],
+        "type": "Culture"
+    },
+    {
+        "question": "Select 4 countries famous for originating martial arts",
+        "required": 4,
+        "answer": ["China", "Japan", "South Korea", "Thailand", "Brazil", "Israel"],
+        "type": "Culture"
+    },
+    {
+        "question": "Select 4 countries that have won the FIFA World Cup (Men's)",
+        "required": 4,
+        "answer": ["Brazil", "Germany", "Italy", "Argentina", "France", "Uruguay", "England", "Spain"],
+        "type": "Culture"
+    },
+    {
+        "question": "Select 5 countries that have hosted the Summer Olympics",
+        "required": 5,
+        "answer": ["United States of America", "United Kingdom", "France", "Greece", "China", "Australia", "Japan", "Germany", "Brazil", "Canada", "Spain", "Italy", "South Korea"],
+        "type": "Culture"
+    },
+    {
+        "question": "Select 4 countries famous for their cheese",
+        "required": 4,
+        "answer": ["France", "Italy", "Switzerland", "Netherlands", "Greece", "Spain", "United Kingdom"],
+        "type": "Culture"
+    },
+    {
+        "question": "Select 2 countries where Tango originated",
+        "required": 2,
+        "answer": ["Argentina", "Uruguay"],
+        "type": "Culture"
+    },
+    {
+        "question": "Select 5 countries where rice is a staple food",
+        "required": 5,
+        "answer": ["China", "India", "Japan", "Vietnam", "Thailand", "Indonesia", "Bangladesh", "Philippines", "South Korea", "Myanmar"],
+        "type": "Culture"
+    },
+    {
+        "question": "Select 4 countries that drive on the left side of the road",
+        "required": 4,
+        "answer": ["United Kingdom", "Australia", "India", "South Africa", "Japan", "New Zealand", "Pakistan", "Indonesia", "Thailand", "Ireland", "Kenya"],
+        "type": "Culture"
+    },
+    {
+        "question": "Select 3 countries where Carnival is a major celebration",
+        "required": 3,
+        "answer": ["Brazil", "Italy", "Trinidad and Tobago", "Germany", "Colombia", "United States of America"],
+        "type": "Culture"
+    },
+    {
+        "question": "Select 3 countries with famous ancient pyramids",
+        "required": 3,
+        "answer": ["Egypt", "Mexico", "Sudan", "Guatemala", "Peru", "Belize"],
+        "type": "Culture"
+    },
+    {
+        "question": "Select 4 countries whose flag contains a crescent moon",
+        "required": 4,
+        "answer": ["Turkey", "Pakistan", "Algeria", "Tunisia", "Malaysia", "Azerbaijan", "Singapore", "Uzbekistan", "Turkmenistan", "Mauritania"],
+        "type": "Culture"
+    },
+    {
+        "question": "Select 2 countries whose flag contains a dragon",
+        "required": 2,
+        "answer": ["Bhutan", "United Kingdom", "Malta"],
+        "type": "Culture"
+    },
+    {
+        "question": "Select 6 countries whose flag contains red, white, and blue",
+        "required": 6,
+        "answer": ["United States of America", "United Kingdom", "France", "Russia", "Netherlands", "Australia", "New Zealand", "Chile", "Cuba", "Czechia", "Norway", "Thailand"],
+        "type": "Culture"
+    },
+    {
+        "question": "Select 4 countries whose flag contains only two colors",
+        "required": 4,
+        "answer": ["Japan", "Canada", "Switzerland", "Austria", "Poland", "Indonesia", "Turkey", "Vietnam", "China", "Denmark", "Sweden", "Finland"],
+        "type": "Culture"
+    },
+    {
+        "question": "Select 3 countries famous for their fashion houses",
+        "required": 3,
+        "answer": ["France", "Italy", "United States of America", "United Kingdom", "Japan", "Spain"],
+        "type": "Culture"
+    },
+    {
+        "question": "Select 5 major oil exporters",
+        "required": 5,
+        "answer": ["Saudi Arabia", "Russia", "United States of America", "Canada", "Iraq", "United Arab Emirates", "Kuwait", "Nigeria", "Brazil"],
+        "type": "Economy"
+    },
+    {
+        "question": "Select 4 major car manufacturing countries",
+        "required": 4,
+        "answer": ["China", "Japan", "Germany", "United States of America", "South Korea", "India", "Mexico", "Spain", "France"],
+        "type": "Economy"
+    },
+    {
+        "question": "Select 4 major wheat exporters",
+        "required": 4,
+        "answer": ["Russia", "Canada", "United States of America", "Australia", "France", "Ukraine", "Argentina"],
+        "type": "Economy"
+    },
+    {
+        "question": "Select 4 major producers of electronics",
+        "required": 4,
+        "answer": ["China", "South Korea", "Japan", "Taiwan", "United States of America", "Germany", "Vietnam"],
+        "type": "Economy"
+    },
+    {
+        "question": "Select 4 countries with a GDP per capita over $60,000",
+        "required": 4,
+        "answer": ["Switzerland", "Norway", "United States of America", "Singapore", "Ireland", "Luxembourg", "Iceland", "Denmark", "Australia", "Netherlands", "Sweden", "Austria"],
+        "type": "Economy"
+    },
+    {
+        "question": "Select 6 countries with a population over 100 million",
+        "required": 6,
+        "answer": ["China", "India", "United States of America", "Indonesia", "Pakistan", "Brazil", "Nigeria", "Bangladesh", "Russia", "Mexico", "Japan", "Ethiopia", "Philippines"],
+        "type": "Economy"
+    },
+    {
+        "question": "Select 4 countries where tourism is a major part of the economy",
+        "required": 4,
+        "answer": ["Greece", "Italy", "Spain", "Thailand", "Mexico", "France", "Turkey", "Portugal", "Croatia", "Egypt"],
+        "type": "Economy"
+    },
+    {
+        "question": "Select 3 major producers of copper",
+        "required": 3,
+        "answer": ["Chile", "Peru", "China", "Dem. Rep. Congo", "United States of America", "Russia", "Australia"],
+        "type": "Economy"
+    },
+    {
+        "question": "Select 4 major producers of gold",
+        "required": 4,
+        "answer": ["China", "Australia", "Russia", "Canada", "United States of America", "Ghana", "South Africa"],
+        "type": "Economy"
+    },
+    {
+        "question": "Select 3 major producers of diamonds",
+        "required": 3,
+        "answer": ["Russia", "Botswana", "Canada", "Dem. Rep. Congo", "Australia", "South Africa"],
+        "type": "Economy"
+    },
+    {
+        "question": "Select 3 major exporters of timber",
+        "required": 3,
+        "answer": ["Canada", "Russia", "Sweden", "Finland", "United States of America", "Germany"],
+        "type": "Economy"
+    },
+    {
+        "question": "Select 4 countries with major fishing industries",
+        "required": 4,
+        "answer": ["China", "Indonesia", "Peru", "Russia", "United States of America", "Japan", "Vietnam", "India", "Norway"],
+        "type": "Economy"
+    },
+    {
+        "question": "Select 4 major wine exporters",
+        "required": 4,
+        "answer": ["France", "Italy", "Spain", "Chile", "Australia", "South Africa", "United States of America", "New Zealand", "Argentina"],
+        "type": "Economy"
+    },
+    {
+        "question": "Select 4 countries with major aerospace industries",
+        "required": 4,
+        "answer": ["United States of America", "France", "Russia", "China", "United Kingdom", "Germany", "Canada", "Brazil"],
+        "type": "Economy"
+    },
+    {
+        "question": "Select 3 countries sometimes considered 'tax havens'",
+        "required": 3,
+        "answer": ["Switzerland", "Luxembourg", "Singapore", "Ireland", "Netherlands", "Panama", "Monaco", "Liechtenstein"],
+        "type": "Economy"
+    },
+    {
+        "question": "Select 4 countries with major pharmaceutical industries",
+        "required": 4,
+        "answer": ["United States of America", "Switzerland", "Germany", "United Kingdom", "France", "China", "India", "Ireland"],
+        "type": "Economy"
+    },
+    {
+        "question": "Select 3 major producers of natural gas",
+        "required": 3,
+        "answer": ["United States of America", "Russia", "Iran", "China", "Canada", "Qatar", "Australia"],
+        "type": "Economy"
+    },
+    {
+        "question": "Select 3 countries with a GNI per capita below $1,500 (World Bank data)",
+        "required": 3,
+        "answer": ["Afghanistan", "Sudan", "Mali", "Niger", "Madagascar", "Dem. Rep. Congo", "Sierra Leone", "Burundi", "Somalia", "S. Sudan"],
+        "type": "Economy"
+    },
+    {
+        "question": "Select 4 major exporters of textiles",
+        "required": 4,
+        "answer": ["China", "Bangladesh", "Vietnam", "India", "Germany", "Turkey", "Pakistan", "Italy"],
+        "type": "Economy"
+    },
+    {
+        "question": "Select 5 countries with a very high Human Development Index (HDI > 0.9)",
+        "required": 5,
+        "answer": ["Norway", "Switzerland", "Ireland", "Germany", "Australia", "Iceland", "Sweden", "Denmark", "Netherlands", "Canada", "Singapore", "Japan"],
+        "type": "Economy"
+    }
 ]
